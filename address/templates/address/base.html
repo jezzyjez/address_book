@@ -1,0 +1,42 @@
+{% load staticfiles %}
+<html> <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static 'css/address.css' %}">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Josefin+Slab">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Django Exam</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           {% if user.is_authenticated %}
+            <ul class="navbar-nav nav-tabs mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'address' %}">Address Book <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'upload_contact' %}">Upload Contact<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav justify-content-end" >
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'logout' %}">Logout <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+           {% else %}
+            <ul class="navbar-nav mr-auto justify-content-end" >
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'register' %}">Register <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+           {% endif %}
+
+    </nav>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

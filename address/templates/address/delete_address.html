@@ -1,0 +1,29 @@
+{% extends 'address/base.html' %}
+
+{% block content %}
+    <h1> <p class="text-center"> Address Book </p> </h1>
+    <div class="container-fluid">
+            <div class="row row-eq-height mx-auto">
+                <div class="col-sm-2 col-border"> First Name </div>
+                <div class="col-sm-2 col-border"> Last Name </div>
+                <div class="col-sm-2 col-border"> Address </div>
+                <div class="col-sm-2 col-border"> Contact Info </div>
+                <div class="col-sm-2 btn-padding" > <a class="btn btn-primary btn-sm" href="{% url 'add_contact' %}"><span class="fa fa-plus-square"></span></a> </div>
+            </div>
+            {% for address in address_list %}
+                <div class="row row-eq-height mx-auto">
+                    <div class="col-sm-2 col-border"> {{ address.first_name }}</div>
+                    <div class="col-sm-2 col-border"> {{ address.last_name }}</div>
+                    <div class="col-sm-2 col-border"> {{ address.address }}</div>
+                    <div class="col-sm-2 col-border"> {{ address.contact_number}}</div>
+                    <div class="col-sm-2 btn-padding" > <a class="btn btn-primary btn-sm" href="{% url 'edit_contact' pk=address.pk %}"><span class="fa fa-edit"></span></a> </div>
+                </div>
+           {% endfor %}
+    <form method="post"> {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-danger"> Delete </button>
+        <a class="btn btn-warning" role="button" href="{% url 'address' %}">Cancel</a>
+    </form>
+    </div>
+
+{% endblock %}
