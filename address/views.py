@@ -11,15 +11,12 @@ from .forms import PersonalInfoForm
 # Create your views here.
 
 @login_required
-def home(request):
-    return render(request, 'address/home.html')
-
-@login_required
 def address(request):
     user = request.user.id
     address_list = PersonalInfo.objects.filter(author__exact=user)
     print (address_list)
     return render(request, 'address/address_book.html', {'address_list': address_list})
+
 
 @login_required
 def add_contact(request):
@@ -33,6 +30,7 @@ def add_contact(request):
     else:
         form = PersonalInfoForm()
     return render(request, 'address/add_address.html', {'form' : form})
+
 
 @login_required
 def edit_contact(request, pk):
@@ -48,6 +46,7 @@ def edit_contact(request, pk):
         form = PersonalInfoForm(instance=address)
     return render(request, 'address/add_address.html', {'form' : form})
 
+
 @login_required
 def delete_contact(request, pk):
     address = PersonalInfo.objects.filter(pk__exact=pk)
@@ -56,6 +55,7 @@ def delete_contact(request, pk):
         return redirect('address')
     else:
         return render(request, 'address/delete_address.html', {'address_list': address})
+
 
 def registration(request):
     if request.method == "POST":
@@ -68,6 +68,8 @@ def registration(request):
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+
+@login_required
 def upload_contact(request):
     if request.method == "POST":
         user = request.user.id
@@ -88,9 +90,12 @@ def upload_contact(request):
                 data = form.save(commit=False)
                 data.author_id = request.user.id
                 data.save()
-    return render(request, 'address/upload_address.html')
+        return redirect('address')
+    else:
+        return render(request, 'address/upload_address.html')
 
 
+@login_required
 def export_contact(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=mycontact.csv'

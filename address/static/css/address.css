@@ -1,54 +1,7 @@
-.page-header {
-    background-color: #87CEFA;
-    color: #ffffff;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 20px 20px 20px 40px;
-}
-
-.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
-    font-size: 40pt;
-    text-decoration: none;
-    font-family: 'Josefin Slab', cursive;
-}
-
-.content {
-    margin-left: 40px;
-}
-
 h1, h2, h3, h4 {
     font-family: 'Josefin Slab', cursive;
     font-size: 40pt;
 }
-
-.date {
-    color: #828282;
-}
-
-.save {
-    float: right;
-}
-
-.post-form textarea, .post-form input {
-    width: 100%;
-}
-
-.top-menu, .top-menu:hover, .top-menu:visited {
-    color: #ffffff;
-    float: right;
-    font-size: 15;
-    margin-right: 20px;
-}
-
-.post {
-    margin-bottom: 70px;
-}
-
-.post h1 a, .post h1 a:visited {
-    color: #000000;
-}
-
 
 .col-border {
    border: 1px solid;
@@ -64,11 +17,3 @@ h1, h2, h3, h4 {
   display: -ms-flexbox;
   display:         flex;
 }
- 
-.btn-padding {
- padding-left : 0px;
-}
-
-
-
-
