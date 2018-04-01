@@ -2,29 +2,33 @@
 
 {% block content %}
     <h1> <p class="text-center"> Address Book </p> </h1>
-    <div class="container-fluid">
-            <div class="row row-eq-height mx-auto">
-                <div class="col-sm-2 col-border"> First Name </div>
-                <div class="col-sm-2 col-border"> Last Name </div>
-                <div class="col-sm-2 col-border"> Address </div>
-                <div class="col-sm-2 col-border"> Contact Info </div>
-                <div class="col-sm-2 btn-padding" > 
+    <table class ="table table-bordered">
+      <thead class="thead-light">
+            <tr >
+                <th scope="col"> First Name </th>
+                <th scope="col"> Last Name </th>
+                <th scope="col"> Address </th>
+                <th scope="col"> Contact Info </th>
+                <th scope="col"> 
                     <a class="btn btn-primary btn-sm" href="{% url 'add_contact' %}"><span class="fa fa-plus-square"></span></a> 
                     <a class="btn btn-primary btn-sm" href="{% url 'export_contact' %}"><span class="fa fa-file"></span></a> 
-                </div>
-            </div>
+                </th>
+            <tr>
+      </thead>
+        <tbody>
             {% for address in address_list %}
-                <div class="row row-eq-height mx-auto">
-                    <div class="col-sm-2 col-border"> {{ address.first_name }}</div>
-                    <div class="col-sm-2 col-border"> {{ address.last_name }}</div>
-                    <div class="col-sm-2 col-border"> {{ address.address }}</div>
-                    <div class="col-sm-2 col-border"> {{ address.contact_number}}</div>
-                    <div class="col-sm-2 btn-padding" > 
-                            <a class="btn btn-primary btn-sm" href="{% url 'edit_contact' pk=address.pk %}"><span class="fa fa-edit"></span></a> 
-                            <a class="btn btn-primary btn-sm" href="{% url 'delete_contact' pk=address.pk %}"><span class="fa fa-trash"></span></a> 
-                    </div>
-                </div>
+            <tr>
+                <th class="table-body" scope="col">{{ address.first_name }}</div>
+                <th class="table-body" scope="col">{{ address.last_name }}</div>
+                <th class="table-body" scope="col">{{ address.address }}</div>
+                <th class="table-body" scope="col">{{ address.contact_number}}</div>
+                <th class="table-body" scope="col"> 
+                    <a class="btn btn-primary btn-sm" href="{% url 'edit_contact' pk=address.pk %}"><span class="fa fa-edit"></span></a> 
+                    <a class="btn btn-primary btn-sm" href="{% url 'delete_contact' pk=address.pk %}"><span class="fa fa-trash"></span></a> 
+                </th>
+            </tr>
+         </tbody>
            {% endfor %}
-    </div>
+   </table>
 
 {% endblock %}

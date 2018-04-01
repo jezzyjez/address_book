@@ -17,3 +17,7 @@ h1, h2, h3, h4 {
   display: -ms-flexbox;
   display:         flex;
 }
+
+.table-body {
+  font-weight : lighter
+}
